@@ -2,9 +2,30 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>News</title>
+
+    <style>
+        h4{
+            font-family: sans-serif;
+            color: blue;
+        }
+        h2{
+            font-family: sans-serif;
+            color: red;
+        }
+    </style>
 </head>
 <body>
+    {% for obj in object_list %}
+    <h2>
+        <a href="{% url "newsdetail" pk=obj.pk slug=obj.slug %}">{{obj.title}}</a>
+    </h2>
+    <ul>
+        <li> <h4>
+            {{obj.content}}
+        </h4> </li>
+    </ul>
+    {%endfor%}
 
 </body>
 </html>
