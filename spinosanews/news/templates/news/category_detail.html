@@ -2,9 +2,11 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>{{object.name}}</title>
 </head>
 <body>
+{% for new in object.news_set.all %}
+    <a href="{% url "newsdetail" pk=new.pk slug=new.slug %}">{{new.title}}</a>
+{% endfor %}
 
 </body>
-</html>
