@@ -7,7 +7,7 @@
 <body>
 Categories:
 {% for cat in object.categories.all %}
-    <a href="{% url "categorydetail" slug=cat.slug %}">{{cat.name}}</a>
+    <a href="{% url "categorydetail" slug=cat.slug %}">{{cat.name}} <br><br></a>
 {% endfor %}
 <hr>
 {{object.content}}

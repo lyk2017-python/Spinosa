@@ -6,7 +6,7 @@
 </head>
 <body>
 {% for new in object.news_set.all %}
-    <a href="{% url "newsdetail" pk=new.pk slug=new.slug %}">{{new.title}}</a>
+    <a href="{% url "newsdetail" pk=new.pk slug=new.slug %}">{{new.title}}<br><br></a>
 {% endfor %}
 
 </body>
