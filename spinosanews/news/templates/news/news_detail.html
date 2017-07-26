@@ -5,6 +5,11 @@
     <title>{{object.title}}</title>
 </head>
 <body>
+Categories:
+{% for cat in object.categories.all %}
+    <a href="{% url "categorydetail" slug=cat.slug %}">{{cat.name}}</a>
+{% endfor %}
+<hr>
 {{object.content}}
 </body>
 </html>

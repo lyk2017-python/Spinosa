@@ -49,6 +49,7 @@ class Category(models.Model):
     name holds the keywords of tags '''
 
     name = models.CharField(max_length=50, unique=True)
+    slug = models.SlugField(default="")
 
     def __str__(self):
         return "{id}-{name}".format(id = self.id,name = self.name[0:20])
