@@ -4,6 +4,7 @@ from django.utils import timezone
 
 class News(models.Model):
     ''' DOCUMENTATION
+    News class is reference of the News in database.
     Title holds heading of the news, content holds the whole text,
     source holds UFL of the page, slug keeps the title as an URL,
     image gets addresses of images, publish_date and update date keeps when the entry has opened and modified,
@@ -26,6 +27,7 @@ class News(models.Model):
 
 class Comment(models.Model):
     '''DOCUMENTATION
+    Comment class is reference of the comments for news in database.
     Content is main text of the comment, news gets id of the News and keeps it for direction,
     publish_date and update date keeps when the comment has opened and modified,
     likes and reports hold number of their counts.'''
@@ -42,6 +44,7 @@ class Comment(models.Model):
 
 class Category(models.Model):
     '''DOCUMENTATION
+    Category class is reference of the categories for news in database.
     name holds the keywords of tags '''
 
     name = models.CharField(max_length=50, unique=True)
