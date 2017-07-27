@@ -5,9 +5,15 @@ from news.models import *
 #Comment
 #Category
 
+class NewsInLine(admin.StackedInline):
+    model = News.categories.through
+    extra = 0
+
 @admin.register(Category)
 class CategoryAdmin(admin.ModelAdmin):
-    pass
+    list_display = ["name", "slug"]
+    search_fields = ["name", "slug"]
+    inlines = [NewsInLine]
 
 @admin.register(News)
 class NewsAdmin(admin.ModelAdmin):
