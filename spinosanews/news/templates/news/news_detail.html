@@ -2,12 +2,12 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>{{object.title}}</title>
+    <title>{{object.title|upper}}</title>
 </head>
 <body>
 Categories:
 {% for cat in object.categories.all %}
-    <a href="{% url "categorydetail" slug=cat.slug %}">{{cat.name}} <br><br></a>
+    <a href="{% url "categorydetail" slug=cat.slug %}">{{cat.name|title}}</a>
 {% endfor %}
 <hr>
 {{object.content}}

@@ -16,8 +16,8 @@ class News(models.Model):
     source = models.URLField()
     slug = models.SlugField()
     image = models.ImageField(null=True, blank=True)
-    publish_date = models.DateField(default=timezone.now)
-    update_date = models.DateField(auto_now=True)
+    publish_date = models.DateTimeField(default=timezone.now)
+    update_date = models.DateTimeField(auto_now=True)
     likes = models.SmallIntegerField(default=0)
     reports = models.PositiveSmallIntegerField(default=0)
     status = models.PositiveSmallIntegerField(default=0)
@@ -25,6 +25,11 @@ class News(models.Model):
 
     def __str__(self):
         return "{id}-{title}".format(id = self.id, title = self.title[0:20])
+
+    class Meta:
+        get_latest_by = "publish_date"
+        verbose_name = "News"
+        verbose_name_plural = "News"
 
 class Comment(models.Model):
     '''DOCUMENTATIONCategory
@@ -54,3 +59,6 @@ class Category(models.Model):
     def __str__(self):
         return "{id}-{name}".format(id = self.id,name = self.name[0:20])
 
+    class Meta:
+        verbose_name = "Category"
+        verbose_name_plural = "Categories"

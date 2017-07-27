@@ -18,11 +18,12 @@
 <body>
     {% for obj in object_list %}
     <h2>
-        <a href="{% url "newsdetail" pk=obj.pk slug=obj.slug %}">{{obj.title}}</a>
+        <a href="{% url "newsdetail" pk=obj.pk slug=obj.slug %}">{{obj.title|upper}}</a>
+        {{obj.publish_date|date:"d-m-Y"}} {{ obj.publish_date|date:"H:i" }}
     </h2>
     <ul>
         <li> <h4>
-            {{obj.content|truncatewords:10}}
+            {{obj.content|truncatewords:10|title}}
         </h4> </li>
     </ul>
     {%endfor%}
