@@ -14,3 +14,4 @@ class NewsView(generic.DetailView):
     def get_queryset(self):
         return News.objects.filter(status=0)
 
+    

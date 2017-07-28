@@ -1,21 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>News</title>
+{% extends "news/base.html" %}
 
-    <style>
-        h4{
-            font-family: sans-serif;
-            color: blue;
-        }
-        h2{
-            font-family: sans-serif;
-            color: red;
-        }
-    </style>
-</head>
-<body>
+{% block body %}
+
     {% for obj in object_list %}
     <h2>
         <a href="{% url "newsdetail" pk=obj.pk slug=obj.slug %}">{{obj.title|upper}}</a>
@@ -27,6 +13,4 @@
         </h4> </li>
     </ul>
     {%endfor%}
-
-</body>
-</html>
+{% endblock %}

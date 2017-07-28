@@ -1,15 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>{{object.title|upper}}</title>
-</head>
-<body>
+
+{% extends "news/base.html" %}
+
+{% block body %}
+
 Categories:
 {% for cat in object.categories.all %}
     <a href="{% url "categorydetail" slug=cat.slug %}">{{cat.name|title}}</a>
 {% endfor %}
 <hr>
 {{object.content}}
-</body>
-</html>
+{% endblock %}
