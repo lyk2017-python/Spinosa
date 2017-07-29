@@ -79,3 +79,9 @@ def create_slug(sender, instance, *args, **kwargs):
             raise AttributeError("No name or title found!")
 
     return instance
+
+@receiver(pre_save, sender=News)
+def auto_hidden(sender, instance, *args, **kwargs):
+    if instance.reports >= 10:
+        instance.status = 3 #Blocked
+    return instance

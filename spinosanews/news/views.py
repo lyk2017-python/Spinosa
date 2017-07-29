@@ -10,16 +10,9 @@ class HomepageView(generic.CreateView):
     template_name = "news/news_list.html"
     success_url = "/"
 
-    def get_status(self):
-        query = News.objects.filter(status=self.kwargs["status"])
-        if query.exists():
-            return query.get()
-        else:
-            raise Http404("Status error!!")
-
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context["newslist"] = News.objects.all()
+        context["newslist"] = News.objects.filter(status=0)
         return context
 
 class CategoryView(generic.DetailView):
@@ -32,5 +25,3 @@ class CategoryView(generic.DetailView):
 class NewsView(generic.DetailView):
     def get_queryset(self):
         return News.objects.filter(status=0)
-
-    
