@@ -10,4 +10,7 @@ Tags:
 {% for cat in object.categories.all %}
     <a href="{% url "categorydetail" slug=cat.slug %}">{{cat.name|title}}</a>
 {% endfor %}
+<br><br>
+Source:
+<a href="{{object.source}}">{{object.source|truncatechars:43}}</a>
 {% endblock %}

@@ -19,6 +19,11 @@ class CategoryView(generic.DetailView):
     def get_queryset(self):
         return Category.objects.all()
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["newslist"] = News.objects.filter(status=0, categories__slug=self.kwargs["slug"]).order_by("-publish_date")
+        return context
+
 class NewsView(generic.DetailView):
     def get_queryset(self):
         return News.objects.filter(status=0)

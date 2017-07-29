@@ -2,7 +2,8 @@
 {% extends "news/base.html" %}
 
 {% block body %}
-{% for new in object.news_set.all %}
+{% for new in newslist %}
     <a href="{% url "newsdetail" pk=new.pk slug=new.slug %}">{{new.title|title}}<br><br></a>
+
 {% endfor %}
 {% endblock %}
