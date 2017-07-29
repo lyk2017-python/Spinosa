@@ -9,5 +9,6 @@ class CreateNewsForm (forms.ModelForm):
             "likes",
             "reports",
             "status",
+            "slug",
         ]
 
