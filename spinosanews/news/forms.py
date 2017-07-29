@@ -15,5 +15,6 @@ class CreateNewsForm (forms.ModelForm):
             "reports",
             "status",
             "slug",
+            "publish_date",
         ]
 
