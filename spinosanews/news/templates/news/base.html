@@ -8,6 +8,7 @@
     <h2><a href={% url "home" %}>Home Page</a></h2>
 
     <hr>
+    Categories:
     {% for cat in categories %}
     <a href="{% url "categorydetail" slug=cat.slug %}">{{cat.name|title}}</a>
     {% endfor %}

@@ -3,10 +3,11 @@
 
 {% block body %}
 
-Categories:
+<h3>{{object.title}}</h3>
+{{object.content}}
+<br><br>
+Tags:
 {% for cat in object.categories.all %}
     <a href="{% url "categorydetail" slug=cat.slug %}">{{cat.name|title}}</a>
 {% endfor %}
-<hr>
-{{object.content}}
 {% endblock %}

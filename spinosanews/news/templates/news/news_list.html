@@ -2,10 +2,10 @@
 
 {% block body %}
     {% for obj in newslist %}
-    <h2>
+    <h3>
         <a href="{% url "newsdetail" pk=obj.pk slug=obj.slug %}">{{obj.title|upper}}</a>
         {{obj.publish_date|date:"d-m-Y"}} {{ obj.publish_date|date:"H:i" }}
-    </h2>
+    </h3>
     <ul>
         <li> <h4>
             {{obj.content|truncatewords:10|title}}
