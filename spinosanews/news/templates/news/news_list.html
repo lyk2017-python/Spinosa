@@ -1,8 +1,7 @@
 {% extends "news/base.html" %}
 
 {% block body %}
-
-    {% for obj in object_list %}
+    {% for obj in newslist %}
     <h2>
         <a href="{% url "newsdetail" pk=obj.pk slug=obj.slug %}">{{obj.title|upper}}</a>
         {{obj.publish_date|date:"d-m-Y"}} {{ obj.publish_date|date:"H:i" }}
@@ -12,5 +11,12 @@
             {{obj.content|truncatewords:10|title}}
         </h4> </li>
     </ul>
+
     {%endfor%}
+
+<form action="." method="post">
+    {% csrf_token %}
+    {{form.as_p}}
+    <button type="submit">Send</button>
+</form>
 {% endblock %}
