@@ -40,6 +40,10 @@ INSTALLED_APPS = [
     'news',
 ]
 
+EMAIL_BACKEND = 'django.core.mail.backends.filebased.EmailBackend'
+EMAIL_FILE_PATH = os.path.join(BASE_DIR, "emails")
+DEFAULT_FROM_EMAIL = "noreply@spinosamail.com"
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
