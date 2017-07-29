@@ -23,4 +23,3 @@ class CreateNewsForm (forms.ModelForm):
             "publish_date",
         ]
 
-
