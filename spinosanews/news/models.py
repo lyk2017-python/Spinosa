@@ -1,5 +1,8 @@
 from django.db import models
 from django.utils import timezone
+from django.dispatch import receiver
+from django.db.models.signals import pre_save
+from django.template.defaultfilters import slugify
 
 class News(models.Model):
     ''' DOCUMENTATION
@@ -62,3 +65,23 @@ class Category(models.Model):
     class Meta:
         verbose_name = "Category"
         verbose_name_plural = "Categories"
+
+@receiver(pre_save, sender = News)
+@receiver(pre_save, sender = Category)
+def create_slug(sender, instance, *args, **kwargs):
+
+    if not instance.slug:
+        if hasattr(sender, "name"):
+            instance.slug = slugify(instance.name)
+        if hasattr(sender, "title"):
+            instance.slug = slugify(instance.title)
+        else:
+            raise AttributeError("No name or title found!")
+
+    return instance
+
+@receiver(pre_save, sender=News)
+def auto_hidden(sender, instance, *args, **kwargs):
+    if instance.reports >= 10:
+        instance.status = 3 #Blocked
+    return instance

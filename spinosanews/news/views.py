@@ -1,12 +1,19 @@
 from django.core.mail import send_mail
-from django.shortcuts import render
+
 from django.views import generic
 from news.models import *
-from news.forms import ContactForm
+from news.forms import ContactForm, CreateNewsForm
 
 # Create your views here.
-class HomepageView(generic.ListView):
-    model = News
+class HomepageView(generic.CreateView):
+    form_class = CreateNewsForm
+    template_name = "news/news_list.html"
+    success_url = "/"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["newslist"] = News.objects.filter(status=0)
+        return context
 
 class CategoryView(generic.DetailView):
     def get_queryset(self):
