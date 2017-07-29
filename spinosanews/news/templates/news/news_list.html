@@ -13,14 +13,13 @@
     </ul>
 
     {%endfor%}
-Click for <a href="{% url "contact" %}">contact</a> us.
 
 <form action="." method="post">
     {% csrf_token %}
     {{form.as_p}}
     <button type="submit">Send</button>
 </form>
-
-Click for <a href="{% url "contact" %}">Contact</a>with us.
+<hr>
+Click for <a href="{% url "contact" %}">Contact</a> with us.
 
 {% endblock %}

@@ -12,7 +12,7 @@ class HomepageView(generic.CreateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context["newslist"] = News.objects.filter(status=0)
+        context["newslist"] = News.objects.filter(status=0).order_by("-publish_date")
         return context
 
 class CategoryView(generic.DetailView):

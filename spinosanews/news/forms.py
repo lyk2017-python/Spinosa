@@ -7,6 +7,11 @@ class ContactForm(forms.Form):
 from news.models import *
 
 class CreateNewsForm (forms.ModelForm):
+
+    def __init__(self, *args, **kwargs):
+        super(CreateNewsForm,self).__init__(*args, **kwargs)
+        self.fields['content'].widget.attrs['rows'] = 3
+
     class Meta:
         model = News
         exclude = [
@@ -17,4 +22,5 @@ class CreateNewsForm (forms.ModelForm):
             "slug",
             "publish_date",
         ]
+
 
