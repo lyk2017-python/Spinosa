@@ -7,16 +7,18 @@
     <link rel="stylesheet" href='{% static "css/style.css" %}'>
 </head>
 <body>
-    <h2><a href={% url "home" %}>Home Page</a></h2>
-
-    <hr>
+    <h1><a href={% url "home" %}>SPINOSA NEWS</a></h1><br>
+     <h3>
     Categories:
     {% for cat in categories %}
-    <a href="{% url "categorydetail" slug=cat.slug %}">{{cat.name|title}}</a>
+   <a href="{% url "categorydetail" slug=cat.slug %}">{{cat.name|title}}</a>
     {% endfor %}
-
+    </h3>
     <hr>
 {% block body %}
 {% endblock %}
+
+<hr>
+Click for <a href="{% url "contact" %}">Contact</a> with us.
 </body>
 </html>

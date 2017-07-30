@@ -1,3 +1,15 @@
 body {
-    background-color: green;
+    background-color: #fafafa;
+}
+
+h1 {
+    text-align: center;
+}
+
+a{
+    text-decoration: none;
+}
+
+h3{
+    display: inline-block;
 }
