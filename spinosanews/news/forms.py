@@ -1,4 +1,6 @@
 from django import forms
+from django.forms import HiddenInput
+
 
 class ContactForm(forms.Form):
     email = forms.EmailField()
@@ -24,14 +26,16 @@ class CreateNewsForm (forms.ModelForm):
         ]
 
 class CreateCommentForm(forms.ModelForm):
-    def __init__(self, *args, **kwargs):
-        super(CreateNewsForm,self).__init__(*args, **kwargs)
-        self.fields['content'].widget.attrs['rows'] = 3
-
     class Meta:
         model = Comment
         exclude = [
-            "news",
+            "id",
             "publish_date",
             "update_date",
+            "likes",
+            "reports",
         ]
+
+        widgets= {
+            "news" : HiddenInput()
+        }
