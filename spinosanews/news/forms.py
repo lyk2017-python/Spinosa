@@ -23,3 +23,15 @@ class CreateNewsForm (forms.ModelForm):
             "publish_date",
         ]
 
+class CreateCommentForm(forms.ModelForm):
+    def __init__(self, *args, **kwargs):
+        super(CreateNewsForm,self).__init__(*args, **kwargs)
+        self.fields['content'].widget.attrs['rows'] = 3
+
+    class Meta:
+        model = Comment
+        exclude = [
+            "news",
+            "publish_date",
+            "update_date",
+        ]
