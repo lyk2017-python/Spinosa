@@ -7,16 +7,42 @@
           <a class="list-group-item active" href="{% url "newsdetail" pk=obj.pk slug=obj.slug %}" >
 
             <h3 class="list-group-item-heading">
-            {{obj.title|upper}}
-            {{obj.publish_date|date:"d-m-Y"}} {{ obj.publish_date|date:"H:i" }}
+            {{obj.title|truncatewords:7|upper}}
+            <span style="text-align:right;"> {{obj.publish_date|date:"d-m-Y"}} {{ obj.publish_date|date:"H:i" }} </span>
             </h3>
 
-            <p class="list-group-item-text">{{obj.content|truncatewords:30|title}}</p>
+            <p style="font-size:110%" class="list-group-item-text">{{obj.content|truncatewords:30|title}}</p>
           </a>
+    <br>
     {%endfor%}
         </div>
 
 
+
+ <div class="w3-card-4">
+
+<header class="w3-container w3-light-grey">
+  <h3>John Doe</h3>
+</header>
+
+<div class="w3-container">
+  <p>1 new friend request</p>
+  <hr>
+  <img src="img_avatar3.png" alt="Avatar" class="w3-left w3-circle">
+  <p>President/CEO at Mighty Schools...</p>
+</div>
+
+<button class="w3-button w3-block w3-dark-grey">+ Connect</button>
+
+</div>
+
+
+
+
+
+
+<hr><br>
+<h2>Create Comment:</h2><br>
 <form action="." method="post">
     {% csrf_token %}
     {{form.as_p}}

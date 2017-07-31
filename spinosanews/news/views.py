@@ -39,7 +39,7 @@ class NewsView(generic.CreateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context["commentslist"] = Comment.objects.filter(news__pk=self.kwargs["pk"]).order_by("-publish_date")
+        context["commentslist"] = Comment.objects.filter(news__pk=self.kwargs["pk"]).order_by("publish_date")
         context["news"] = News.objects.filter(status=0, slug=self.kwargs["slug"]).first()
         return context
 
