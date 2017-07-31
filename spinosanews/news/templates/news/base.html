@@ -16,14 +16,17 @@
 
 </head>
 <body>
-    <h1><a href={% url "home" %}>SPINOSA NEWS</a></h1><br>
-    <h3>
-    <ul class="nav nav-pills">
-            {% for cat in categories %}
-             <li role="presentation"><a href="{% url "categorydetail" slug=cat.slug %}">{{cat.name|title}}</a></li>
+    <h1><a href={% url "home" %}>SPINOSA NEWS</a></h1>
+
+    <div class="row">
+        <hr class="hr-danger" />
+        <ol class="breadcrumb bread-danger">
+            <a style="font-size:180%;" href={% url "home" %} class="btn btn-danger"><i class="fa fa-paw"></i> SPINOSA </a>
+              {% for cat in categories %}
+             <li style="font-size:180%;" role="presentation"><a href="{% url "categorydetail" slug=cat.slug %}">{{cat.name|title}}</a></li>
             {% endfor %}
-    </ul>
-    </h3>
+        </ol>
+    </div>
     <hr>
     <div class="container">
 
