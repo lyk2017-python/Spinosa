@@ -1,18 +1,21 @@
 {% extends "news/base.html" %}
 
 {% block body %}
-    {% for obj in newslist %}
-    <h3>
-        <a href="{% url "newsdetail" pk=obj.pk slug=obj.slug %}">{{obj.title|upper}}</a>
-        {{obj.publish_date|date:"d-m-Y"}} {{ obj.publish_date|date:"H:i" }}
-    </h3>
-    <ul>
-        <li> <h4>
-            {{obj.content|truncatewords:10|title}}
-        </h4> </li>
-    </ul>
 
+<div class="list-group">
+    {% for obj in newslist %}
+          <a class="list-group-item active" href="{% url "newsdetail" pk=obj.pk slug=obj.slug %}" >
+
+            <h3 class="list-group-item-heading">
+            {{obj.title|upper}}
+            {{obj.publish_date|date:"d-m-Y"}} {{ obj.publish_date|date:"H:i" }}
+            </h3>
+
+            <p class="list-group-item-text">{{obj.content|truncatewords:30|title}}</p>
+          </a>
     {%endfor%}
+        </div>
+
 
 <form action="." method="post">
     {% csrf_token %}

@@ -5,19 +5,32 @@
     <title>Spinosa</title>
     {% load static %}
     <link rel="stylesheet" href='{% static "css/style.css" %}'>
+    <!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
 </head>
 <body>
     <h1><a href={% url "home" %}>SPINOSA NEWS</a></h1><br>
-     <h3>
-    Categories:
-    {% for cat in categories %}
-   <a href="{% url "categorydetail" slug=cat.slug %}">{{cat.name|title}}</a>
-    {% endfor %}
+    <h3>
+    <ul class="nav nav-pills">
+            {% for cat in categories %}
+             <li role="presentation"><a href="{% url "categorydetail" slug=cat.slug %}">{{cat.name|title}}</a></li>
+            {% endfor %}
+    </ul>
     </h3>
     <hr>
+    <div class="container">
+        
 {% block body %}
-{% endblock %}
 
+{% endblock %}
+    </div>
 <hr>
 Click for <a href="{% url "contact" %}">Contact</a> with us.
 </body>
