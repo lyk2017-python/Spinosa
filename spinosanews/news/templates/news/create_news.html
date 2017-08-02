@@ -1,12 +1,12 @@
 {% extends "news/base.html" %}
+{% load bootstrap3%}
 
 {% block body %}
-<hr><br>
-<h2>Create News:</h2><br>
+<legend>Create News</legend>
 <form action="." method="post">
     {% csrf_token %}
-    {{form.as_p}}
-    <button type="submit">Send</button>
+    {% bootstrap_form form %}
+    <button class="btn btn-success" type="submit">Send</button>
 </form>
 
 {% endblock %}

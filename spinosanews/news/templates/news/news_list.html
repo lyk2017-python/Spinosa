@@ -1,19 +1,23 @@
 {% extends "news/base.html" %}
-
+{% load bootstrap3%}
 {% block body %}
 
-<div class="list-group">
+
     {% for obj in newslist %}
-          <a class="list-group-item active" href="{% url "newsdetail" pk=obj.pk slug=obj.slug %}" >
 
-            <h3 class="list-group-item-heading">
-            {{obj.title|truncatewords:7|upper}}
-            <span style="text-align:right;"> {{obj.publish_date|date:"d-m-Y"}} {{ obj.publish_date|date:"H:i" }} </span>
+<div class="panel panel-success">
+            <div class="panel-heading"><h3 class="panel-title">
+            {{obj.title|truncatewords:5|upper}}
             </h3>
-
-            <p style="font-size:110%" class="list-group-item-text">{{obj.content|truncatewords:30|title}}</p>
-          </a>
-    <br>
+            <p style="font-size:105%; float:right;"> {{obj.publish_date|date:"d-m-Y"}} {{ obj.publish_date|date:"H:i" }} </p>
+            </div>
+            <a href="{% url "newsdetail" pk=obj.pk slug=obj.slug %}">
+            <div style="font-size:110%" class="panel-body">{{obj.content|truncatewords:100|title}}</div>
+            </a>
+            <a class="btn btn-success btn-rg" href="{% url "newsdetail" pk=obj.pk slug=obj.slug %}" >
+            <span class="glyphicon glyphicon-log-in "></span>
+            </a>
+ </div>
     {%endfor%}
-        </div>
+
 {% endblock %}

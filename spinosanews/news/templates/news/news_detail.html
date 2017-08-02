@@ -1,4 +1,5 @@
 {% extends "news/base.html" %}
+{% load bootstrap3%}
 {% block body %}
 
 <h3 style="display:inline-block;">{{news.title}}</h3> - <h5 style="display:inline-block;">{{news.publish_date}}</h5>
@@ -16,7 +17,7 @@ Tags:
     <span id="like_news_{{ news.id }}">{{news.likes}}</span>
     <button style="background-color:#f8f8f8; border:none;" onclick="like_news(true, {{ news.id }})"><span class="glyphicon glyphicon-thumbs-up"></span></button>
     <button style="background-color:#f8f8f8; border:none;" onclick="like_news(false, {{ news.id }})"><span class="glyphicon glyphicon-thumbs-down"></span></button>
-<hr>
+
 {% endif%}
 
 
@@ -38,10 +39,10 @@ Tags:
 <br>
 
 Source:
-<a href="{{object.source}}">{{news.source|truncatechars:43}}</a>
+<a href="{{object.source}}">{{news.source|truncatechars:63}}</a>
 <br>
-<hr>
-<h2>Comments:</h2>
+<h2 name="comment-title">Comments</h2>
+<br><br>
 {% for com in commentslist %}
     <p>{{com.content}}</p>
 {% if request.user.is_authenticated %}
@@ -74,7 +75,7 @@ Source:
 <h3>Create Comment</h3>
 <form action="." method="POST">
     {% csrf_token %}
-    {{form.as_p}}
+    {% bootstrap_form form %}
     <button type="submit">Send</button>
 </form>
 {% endif%}
