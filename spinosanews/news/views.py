@@ -1,6 +1,8 @@
+from django.contrib.auth.decorators import login_required
 from django.core.mail import send_mail
 from django.http import Http404, HttpResponse, JsonResponse
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.utils.decorators import method_decorator
 from django.views import generic
 from news.models import *
 from news.forms import ContactForm, CreateNewsForm, CreateCommentForm
@@ -77,6 +79,9 @@ class NewsView(generic.CreateView):
             kwargs["data"] = post_data
         return kwargs
 
+    @method_decorator(login_required)
+    def post(self, request, *args, **kwargs):
+        return super().post(request,*args,**kwargs)
 
 class ContactFormView(generic.FormView):
     form_class = ContactForm
