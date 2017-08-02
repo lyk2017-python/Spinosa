@@ -1,15 +1,20 @@
 from django.core.mail import send_mail
 from django.http import Http404
-
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views import generic
 from news.models import *
 from news.forms import ContactForm, CreateNewsForm, CreateCommentForm
 
-# Create your views here.
-class HomepageView(generic.CreateView):
+class CreateNewsForm(generic.CreateView):
     form_class = CreateNewsForm
-    template_name = "news/news_list.html"
+    template_name = "news/create_news.html"
     success_url = "/"
+
+# Create your views here.
+class HomepageView(generic.ListView):
+
+    def get_queryset(self):
+        return News.objects.filter(status=0).order_by("-publish_date")
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)

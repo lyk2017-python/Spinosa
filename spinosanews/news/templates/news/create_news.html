@@ -1,0 +1,12 @@
+{% extends "news/base.html" %}
+
+{% block body %}
+<hr><br>
+<h2>Create News:</h2><br>
+<form action="." method="post">
+    {% csrf_token %}
+    {{form.as_p}}
+    <button type="submit">Send</button>
+</form>
+
+{% endblock %}
