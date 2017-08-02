@@ -9,10 +9,9 @@ from news.forms import ContactForm, CreateNewsForm, CreateCommentForm
 from django.db.models import F
 from django.shortcuts import get_object_or_404
 
-def like(request):
+def like_news(request):
     id = request.POST.get("id", default=None)
     like = request.POST.get("like")
-    print(id)
     obj = get_object_or_404(News, id=int(id))
     if like == "true":
         obj.likes = F("likes")+1
@@ -25,7 +24,20 @@ def like(request):
     obj.refresh_from_db()
     return JsonResponse({"like": obj.likes, "id": id})
 
-
+def like_comments(request):
+    id = request.POST.get("id", default=None)
+    like = request.POST.get("like")
+    obj = get_object_or_404(Comment, id=int(id))
+    if like == "true":
+        obj.likes = F("likes")+1
+        obj.save(update_fields=["likes"])
+    elif like == "false":
+        obj.likes = F("likes")-1
+        obj.save(update_fields=["likes"])
+    else:
+        return  HttpResponse(status=400)
+    obj.refresh_from_db()
+    return JsonResponse({"like": obj.likes, "id": id})
 
 
 class CreateNewsForm(LoginRequiredMixin,generic.CreateView):

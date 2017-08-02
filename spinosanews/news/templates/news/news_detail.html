@@ -13,28 +13,27 @@ Tags:
 <br>
 {% if request.user.is_authenticated %}
 <hr>
-    <span id="like_{{ news.id }}">{{news.likes}}</span>
-    <button onclick="like(true, {{ news.id }})">like</button>
-    <button onclick="like(false, {{ news.id }})">dislike</button>
+    <span id="like_news_{{ news.id }}">{{news.likes}}</span>
+    <button onclick="like_news(true, {{ news.id }})">like</button>
+    <button onclick="like_news(false, {{ news.id }})">dislike</button>
 <hr>
 {% endif%}
 
 
 <script>
-    function like(param, id) {
+    function like_news(param, id) {
          $.post({
              data: {
                  "like": param,
                  "id": id,
                  "csrfmiddlewaretoken": getCookie('csrftoken')
              },
-             url: "{% url "like_dislike" %}",
+             url: "{% url "like_news" %}",
              success: function (data) {
-                 $("#like_"+data.id).text(data.like)
+                 $("#like_news_"+data.id).text(data.like)
              }
          })
      }
-
 </script>
 <br>
 
@@ -45,8 +44,31 @@ Source:
 <h2>Comments:</h2>
 {% for com in commentslist %}
     <p>{{com.content}}</p>
-{% endfor %}
+{% if request.user.is_authenticated %}
+    <span id="like_comments_{{ com.id }}">{{com.likes}}</span>
+    <button onclick="like_comments(true, {{ com.id }})">like</button>
+    <button onclick="like_comments(false, {{ com.id }})">dislike</button>
 <hr>
+{% endif%}
+{% endfor %}
+
+<script>
+    function like_comments(param, id) {
+         $.post({
+             data: {
+                 "like": param,
+                 "id": id,
+                 "csrfmiddlewaretoken": getCookie('csrftoken')
+             },
+             url: "{% url "like_comments" %}",
+             success: function (data) {
+                 $("#like_comments_"+data.id).text(data.like)
+             }
+         })
+     }
+</script>
+
+
 {% if request.user.is_authenticated %}
 <h3>Create Comment</h3>
 <form action="." method="POST">
