@@ -2,9 +2,15 @@
 {% load bootstrap3%}
 {% block body %}
 
-<h3 style="display:inline-block;">{{news.title}}</h3> - <h5 style="display:inline-block;">{{news.publish_date}}</h5>
+<h3 style="display:inline-block; font-size:222%;"><strong>{{news.title}}</strong></h3>  -  <h5 style="display:inline-block;">{{news.publish_date}}</h5>
 <br><br>
-{{news.content}}
+<p style="font-size:130%">{{news.content}}</p>
+{% if request.user.is_authenticated %} <br>
+    <button style="background-color:#FFFAF0; border:none;" onclick="like_news(true, {{ news.id }})"><span class="glyphicon glyphicon-thumbs-up"></span></button>
+    <span id="like_news_{{ news.id }}">{{news.likes}}</span>
+    <button style="background-color:#FFFAF0; border:none;" onclick="like_news(false, {{ news.id }})"><span class="glyphicon glyphicon-thumbs-down"></span></button>
+
+{% endif%}
 <br><br>
 Tags:
 {% for cat in news.categories.all %}
@@ -12,13 +18,7 @@ Tags:
 {% endfor %}
 
 <br>
-{% if request.user.is_authenticated %}
-<hr>
-    <span id="like_news_{{ news.id }}">{{news.likes}}</span>
-    <button style="background-color:#f8f8f8; border:none;" onclick="like_news(true, {{ news.id }})"><span class="glyphicon glyphicon-thumbs-up"></span></button>
-    <button style="background-color:#f8f8f8; border:none;" onclick="like_news(false, {{ news.id }})"><span class="glyphicon glyphicon-thumbs-down"></span></button>
 
-{% endif%}
 
 
 <script>
@@ -40,19 +40,25 @@ Tags:
 
 Source:
 <a href="{{object.source}}">{{news.source|truncatechars:63}}</a>
-<br>
-<h2 name="comment-title">Comments</h2>
 <br><br>
-{% for com in commentslist %}
-    <p>{{com.content}}</p>
-{% if request.user.is_authenticated %}
-
-    <span id="like_comments_{{ com.id }}">{{com.likes}}</span>
-    <button style="background-color:#f8f8f8; border:none;" onclick="like_comments(true, {{ com.id }})"><span class="glyphicon glyphicon-thumbs-up"></span></button>
-    <button style="background-color:#f8f8f8; border:none;" onclick="like_comments(false, {{ com.id }})"><span class="glyphicon glyphicon-thumbs-down"></span></button>
-<hr>
-{% endif%}
-{% endfor %}
+<h2 style="position:absolute; left:50%;">Comments</h2>
+<br><br>
+<div class="list-group">
+    <hr>
+    {% for com in commentslist %}
+        <h4 class="list-group-item-heading">{{com.content}}</h4>
+    {% if request.user.is_authenticated %}
+    <br>
+    <p class="list-group-item-text">
+        <span id="like_comments_{{ com.id }}">{{com.likes}}</span>
+        <button style="background-color:#FFFAF0; border:none;" onclick="like_comments(true, {{ com.id }})"><span class="glyphicon glyphicon-thumbs-up"></span></button>
+        <button style="background-color:#FFFAF0; border:none;" onclick="like_comments(false, {{ com.id }})"><span class="glyphicon glyphicon-thumbs-down"></span></button>
+    </p>
+    <hr>
+    <br>
+    {% endif%}
+    {% endfor %}
+</div>
 
 <script>
     function like_comments(param, id) {
@@ -76,7 +82,7 @@ Source:
 <form action="." method="POST">
     {% csrf_token %}
     {% bootstrap_form form %}
-    <button type="submit">Send</button>
+    <button class="btn btn-info" type="submit">Send</button>
 </form>
 {% endif%}
 {% endblock %}
