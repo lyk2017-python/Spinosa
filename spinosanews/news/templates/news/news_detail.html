@@ -21,10 +21,12 @@ Source:
     <p>{{com.content}}</p>
 {% endfor %}
 <hr>
+{% if request.user.is_authenticated %}
 <h3>Create Comment</h3>
 <form action="." method="POST">
     {% csrf_token %}
     {{form.as_p}}
     <button type="submit">Send</button>
 </form>
+{% endif%}
 {% endblock %}
