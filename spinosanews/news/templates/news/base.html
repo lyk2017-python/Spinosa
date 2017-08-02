@@ -23,19 +23,26 @@
 <body>
     <h1 class="dom"><a href={% url "home" %}>SPINOSA NEWS</a></h1>
 
-    <h3 class="createnew"><a href="{% url "createnews" %}">Create News</a></h3>
-
+    <h3 class="createnew">
+        <span class="glyphicon glyphicon-pushpin"></span>
+        <a href="{% url "createnews" %}">Create News</a></h3>
+    <div class="login-logout">
         {% if request.user.is_authenticated %}
-    Welcome {{ request.user.username }}
-    <form action="{% url "logout" %}" method="post" >
-    {% csrf_token %}
-    <input type="hidden" value="/" name="next">
-    <button>Logout</button>
-    </form>
-    {% else %}
-    <a href="{% url "login" %}">Login</a>
-    {% endif %}
-
+            Welcome {{ request.user.username }}
+            <form action="{% url "logout" %}" method="post" >
+            {% csrf_token %}
+            <input type="hidden" value="/" name="next">
+        <h3>
+            <span class="glyphicon glyphicon-user"></span>
+            <button>Logout</button></h3>
+            </form>
+        {% else %}
+        <h3>
+            <span class="glyphicon glyphicon-user"></span>
+            <a href="{% url "login" %}">Login</a>
+        </h3>
+        {% endif %}
+    </div>
 
     <div class="row" style="text-align:center;">
         <hr class="hr-danger" />

@@ -17,6 +17,12 @@ body {
     right: 10px;
 
 }
+
+.login-logout{
+
+    display:block;
+}
+
 h2{
     display:inline;
     float:right
