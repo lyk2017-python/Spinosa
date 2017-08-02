@@ -20,6 +20,19 @@
     <h1 class="dom"><a href={% url "home" %}>SPINOSA NEWS</a></h1>
 
     <h3 class="createnew"><a href="{% url "createnews" %}">Create News</a></h3>
+
+        {% if request.user.is_authenticated %}
+    Welcome {{ request.user.username }}
+    <form action="{% url "logout" %}" method="post" >
+    {% csrf_token %}
+    <input type="hidden" value="/" name="next">
+    <button>Logout</button>
+    </form>
+    {% else %}
+    <a href="{% url "login" %}">Login</a>
+    {% endif %}
+
+
     <div class="row" style="text-align:center;">
         <hr class="hr-danger" />
         <ol class="breadcrumb bread-danger">
@@ -36,6 +49,8 @@
 
 {% endblock %}
     </div>
+
+
 <hr>
 Click for <a href="{% url "contact" %}">Contact</a> with us.
 </body>
