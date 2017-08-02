@@ -14,8 +14,8 @@ Tags:
 {% if request.user.is_authenticated %}
 <hr>
     <span id="like_news_{{ news.id }}">{{news.likes}}</span>
-    <button onclick="like_news(true, {{ news.id }})">like</button>
-    <button onclick="like_news(false, {{ news.id }})">dislike</button>
+    <button style="background-color:#f8f8f8; border:none;" onclick="like_news(true, {{ news.id }})"><span class="glyphicon glyphicon-thumbs-up"></span></button>
+    <button style="background-color:#f8f8f8; border:none;" onclick="like_news(false, {{ news.id }})"><span class="glyphicon glyphicon-thumbs-down"></span></button>
 <hr>
 {% endif%}
 
@@ -45,9 +45,10 @@ Source:
 {% for com in commentslist %}
     <p>{{com.content}}</p>
 {% if request.user.is_authenticated %}
+
     <span id="like_comments_{{ com.id }}">{{com.likes}}</span>
-    <button onclick="like_comments(true, {{ com.id }})">like</button>
-    <button onclick="like_comments(false, {{ com.id }})">dislike</button>
+    <button style="background-color:#f8f8f8; border:none;" onclick="like_comments(true, {{ com.id }})"><span class="glyphicon glyphicon-thumbs-up"></span></button>
+    <button style="background-color:#f8f8f8; border:none;" onclick="like_comments(false, {{ com.id }})"><span class="glyphicon glyphicon-thumbs-down"></span></button>
 <hr>
 {% endif%}
 {% endfor %}
