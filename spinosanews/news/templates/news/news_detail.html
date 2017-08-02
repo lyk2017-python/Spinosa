@@ -1,6 +1,4 @@
-
 {% extends "news/base.html" %}
-
 {% block body %}
 
 <h3 style="display:inline-block;">{{news.title}}</h3> - <h5 style="display:inline-block;">{{news.publish_date}}</h5>
@@ -11,7 +9,32 @@ Tags:
 {% for cat in news.categories.all %}
     <a href="{% url "categorydetail" slug=cat.slug %}">{{cat.name|title}}</a>
 {% endfor %}
-<br><br>
+
+<br>
+<hr>
+    <span id="like_{{ news.id }}">{{news.likes}}</span>
+    <button onclick="like(true, {{ news.id }})">like</button>
+    <button onclick="like(false, {{ news.id }})">dislike</button>
+<hr>
+
+<script>
+    function like(param, id) {
+         $.post({
+             data: {
+                 "like": param,
+                 "id": id,
+                 "csrfmiddlewaretoken": getCookie('csrftoken')
+             },
+             url: "{% url "like_dislike" %}",
+             success: function (data) {
+                 $("#like_"+data.id).text(data.like)
+             }
+         })
+     }
+
+</script>
+<br>
+
 Source:
 <a href="{{object.source}}">{{news.source|truncatechars:43}}</a>
 <br>

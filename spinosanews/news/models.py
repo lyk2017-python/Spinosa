@@ -21,7 +21,7 @@ class News(models.Model):
     image = models.ImageField(null=True, blank=True)
     publish_date = models.DateTimeField(default=timezone.now)
     update_date = models.DateTimeField(auto_now=True)
-    likes = models.SmallIntegerField(default=0)
+    likes = models.PositiveSmallIntegerField(default=0)
     reports = models.PositiveSmallIntegerField(default=0)
     status = models.PositiveSmallIntegerField(default=0)
     categories = models.ManyToManyField("Category")
