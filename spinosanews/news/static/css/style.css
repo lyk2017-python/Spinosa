@@ -3,9 +3,23 @@ body {
 
 }
 
-h1 {
-    text-align: center;
+.dom {
     font-size: 450% !important;
+    display: block;
+    text-align: center;
+
+}
+
+.createnew{
+    display: block;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+
+}
+h2{
+    display:inline;
+    float:right
 }
 
 a{

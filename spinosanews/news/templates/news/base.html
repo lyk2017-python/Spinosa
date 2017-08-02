@@ -17,8 +17,9 @@
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 </head>
 <body>
-    <h1><a href={% url "home" %}>SPINOSA NEWS</a></h1>
+    <h1 class="dom"><a href={% url "home" %}>SPINOSA NEWS</a></h1>
 
+    <h3 class="createnew"><a href="{% url "createnews" %}">Create News</a></h3>
     <div class="row" style="text-align:center;">
         <hr class="hr-danger" />
         <ol class="breadcrumb bread-danger">
@@ -28,7 +29,6 @@
             {% endfor %}
         </ol>
     </div>
-    <a href="{% url "createnews" %}">Create News</a>
     <hr>
     <div class="container">
 
