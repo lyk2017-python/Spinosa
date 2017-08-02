@@ -5,7 +5,8 @@ from django.views import generic
 from news.models import *
 from news.forms import ContactForm, CreateNewsForm, CreateCommentForm
 
-class CreateNewsForm(generic.CreateView):
+
+class CreateNewsForm(LoginRequiredMixin,generic.CreateView):
     form_class = CreateNewsForm
     template_name = "news/create_news.html"
     success_url = "/"

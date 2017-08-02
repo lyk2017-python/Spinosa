@@ -1,0 +1,10 @@
+{% extends "news/base.html" %}
+
+{% block body %}
+<form action="." method="POST">
+    {% csrf_token %}
+    <input type="hidden" name="next" value="{{ next }}">
+    {{ form.as_p }}
+    <button type="submit">Login</button>
+
+{% endblock %}
