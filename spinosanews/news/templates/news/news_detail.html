@@ -11,11 +11,14 @@ Tags:
 {% endfor %}
 
 <br>
+{% if request.user.is_authenticated %}
 <hr>
     <span id="like_{{ news.id }}">{{news.likes}}</span>
     <button onclick="like(true, {{ news.id }})">like</button>
     <button onclick="like(false, {{ news.id }})">dislike</button>
 <hr>
+{% endif%}
+
 
 <script>
     function like(param, id) {
