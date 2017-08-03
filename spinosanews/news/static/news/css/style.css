@@ -5,7 +5,13 @@
 
 body {
     background-color:  #FFFAF0   !important;
+}
 
+.cactus{
+    position:absolute;
+    width:140px;
+    height:155px;
+    margin: -19px 0px 0px 10px;
 }
 
 .dom {
