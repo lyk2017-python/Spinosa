@@ -7,7 +7,7 @@
 
 <div class="panel panel-success">
             <div class="panel-heading"><h3 class="panel-title">
-            {{obj.title|truncatewords:5|upper}}
+            <a href="{% url "newsdetail" pk=obj.pk slug=obj.slug %}">{{obj.title|truncatewords:5|upper}}</a>
             </h3>
             <p style="font-size:105%; float:right;"> {{obj.publish_date|date:"d-m-Y"}} {{ obj.publish_date|date:"H:i" }} </p>
             </div>
