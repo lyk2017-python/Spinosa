@@ -28,17 +28,17 @@
             <input type="hidden" value="/" name="next">
         <li>
 
-            <button style="float:right; position: absolute; right:10px; top:145px;" class="btn btn-warning">Logout</button></li>
+            <button style="float:right; position: absolute; right:10px; top:175px;" class="btn btn-warning">Logout</button></li>
             </form>
         <li>
-            <span style="float:right; position: absolute; right:90px; top:147px;">{{user.username|title}}<span>
+            <span style="float:right; position: absolute; right:90px; top:177px;">{{user.username|title}}<span>
         </li>
         {% else %}
         <li>
-            <a style="float:right; position: absolute; right:10px; top:145px;" href="{% url "login" %}">Login</a>
+            <a style="float:right; position: absolute; right:10px; top:175px;" href="{% url "login" %}">Login</a>
         </li>
         <li>
-            <a style="float:right; position: absolute; right:90px; top:145px;" href="{% url "register" %}">SignUp</a>
+            <a style="float:right; position: absolute; right:90px; top:175px;" href="{% url "register" %}">SignUp</a>
         </li>
         {% endif %}
     </ul>
