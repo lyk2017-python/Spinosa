@@ -48,8 +48,10 @@
 
         <ol class="breadcrumb bread-danger">
             <a style="font-size:180%;" href={% url "home" %} class="btn btn-danger"><i class="fa fa-paw"></i> SPINOSA </a>
+            <a>&nbsp;</a>
               {% for cat in categories %}
-             <li style="font-size:180%;" role="presentation"><a style="color:#00960a;" href="{% url "categorydetail" slug=cat.slug %}">{{cat.name|title}}</a></li>
+             <strong style="font-size:180%;" role="presentation"><a style="color:#00960a;" href="{% url "categorydetail" slug=cat.slug%}"> {{cat.name|title}}</a></strong>
+            <a>&nbsp;</a>
             {% endfor %}
         </ol>
     </div>
