@@ -1,5 +1,5 @@
 from django.conf.urls import url
-from news.views import HomepageView, CategoryView, NewsView, ContactFormView, CreateNewsForm, like_comments,like_news
+from news.views import HomepageView, CategoryView, NewsView, ContactFormView, CreateNewsForm, like_comments,like_news, RegistrationView
 
 urlpatterns = [
         url(r'^$', HomepageView.as_view(), name="home"),
@@ -9,4 +9,5 @@ urlpatterns = [
         url(r'create_news/$', CreateNewsForm.as_view(), name="createnews"),
         url(r"^api/likeN/$", like_news, name="like_news"),
         url(r"^api/likeC/$", like_comments, name="like_comments"),
+        url(r"^signup/$", RegistrationView.as_view(), name="register"),
 ]

@@ -1,0 +1,11 @@
+{% extends "news/base.html" %}
+{% load bootstrap3 %}
+{% block body %}
+
+<form action="" method="POST">
+    {% csrf_token %}
+    {% bootstrap_form form %}
+    <button class="btn btn-success" type="submit">Signup</button>
+</form>
+
+{% endblock %}

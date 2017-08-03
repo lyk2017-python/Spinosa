@@ -1,12 +1,12 @@
 {% extends "news/base.html" %}
-
+{% load bootstrap3%}
 {% block body %}
 
 <form action="." method="POST">
 {% csrf_token %}
 
-{{form.as_p}}
+{% bootstrap_form form %}
 
-<button type ="submit">Save</button>
+<button class="btn btn-danger" type ="submit">Save</button>
 </form>
 {% endblock %}

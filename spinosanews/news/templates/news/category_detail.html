@@ -1,9 +1,10 @@
 
 {% extends "news/base.html" %}
-
 {% block body %}
+<br>
 {% for new in newslist %}
-    <a href="{% url "newsdetail" pk=new.pk slug=new.slug %}">{{new.title|title}}<br><br></a>
-
+<div class="well">
+    <a href="{% url "newsdetail" pk=new.pk slug=new.slug %}"><h4>{{new.title|title}}</h4></a>
+</div>
 {% endfor %}
 {% endblock %}

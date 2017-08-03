@@ -30,9 +30,15 @@
 
             <button style="float:right; position: absolute; right:10px; top:145px;" class="btn btn-warning">Logout</button></li>
             </form>
+        <li>
+            <span style="float:right; position: absolute; right:90px; top:147px;">{{user.username|title}}<span>
+        </li>
         {% else %}
         <li>
             <a style="float:right; position: absolute; right:10px; top:145px;" href="{% url "login" %}">Login</a>
+        </li>
+        <li>
+            <a style="float:right; position: absolute; right:90px; top:145px;" href="{% url "register" %}">SignUp</a>
         </li>
         {% endif %}
     </ul>
@@ -52,7 +58,8 @@
 
 {% endblock %}
     </div>
-<h4>
-Click for <a href="{% url "contact" %}">Contact</a> with us.</h4>
+<h4 style="padding:15px;">
+<hr>Click for <a href="{% url "contact" %}">Contact</a> with us.
+</h4>
 </body>
 </html>
