@@ -16,7 +16,7 @@ Author: {{news.user|title}}
 <br><br>
 Tags:
 {% for cat in news.categories.all %}
-    <a href="{% url "categorydetail" slug=cat.slug %}">{{cat.name|title}}</a>
+    <a href="{% url "categorydetail" slug=cat.slug %}">{{cat.name|title}}  </a>
 {% endfor %}
 
 <br>
