@@ -4,7 +4,7 @@
 <br>
 {% for new in newslist %}
 <div class="well">
-    <a href="{% url "newsdetail" pk=new.pk slug=new.slug %}"><h4>{{new.title|title}}</h4></a>
+    <a style="color:black;" href="{% url "newsdetail" pk=new.pk slug=new.slug %}"><h4><strong>{{new.title|title}}</strong></h4></a>
 </div>
 {% endfor %}
 {% endblock %}

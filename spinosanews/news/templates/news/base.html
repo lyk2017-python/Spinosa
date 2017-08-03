@@ -16,10 +16,10 @@
 </head>
 
 <body>
-    <h1 class="dom"><a href={% url "home" %}>SPINOSA NEWS</a></h1>
+    <h1 class="dom"><a style="color:#00960a;" href={% url "home" %}>SPINOSA NEWS</a></h1>
     <h3 class="createnew">
         <a href="{% url "createnews" %}">
-        <span class="glyphicon glyphicon-plus-sign" style="color:#3175b0; font-size:45px; padding:20px;" title="Create News"></span>
+        <span class="glyphicon glyphicon-plus-sign" style="color:#00960a; font-size:45px; padding:20px;" title="Create News"></span>
         </a></h3>
     <ul class="pager">
         {% if request.user.is_authenticated %}
@@ -29,7 +29,7 @@
             <input type="hidden" value="/" name="next">
         <li>
 
-            <button style="float:right; position: absolute; right:10px; top:175px;" class="btn btn-warning">Logout</button></li>
+            <button style="float:right; position: absolute; right:10px; top:175px;" class="btn btn-success">Logout</button></li>
             </form>
         <li>
             <span style="float:right; position: absolute; right:90px; top:177px;"><strong>{{user.username|title}}</strong><span>
@@ -49,7 +49,7 @@
         <ol class="breadcrumb bread-danger">
             <a style="font-size:180%;" href={% url "home" %} class="btn btn-danger"><i class="fa fa-paw"></i> SPINOSA </a>
               {% for cat in categories %}
-             <li style="font-size:180%;" role="presentation"><a href="{% url "categorydetail" slug=cat.slug %}">{{cat.name|title}}</a></li>
+             <li style="font-size:180%;" role="presentation"><a style="color:#00960a;" href="{% url "categorydetail" slug=cat.slug %}">{{cat.name|title}}</a></li>
             {% endfor %}
         </ol>
     </div>

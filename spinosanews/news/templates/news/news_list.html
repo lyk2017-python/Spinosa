@@ -6,13 +6,13 @@
     {% for obj in newslist %}
 
 <div class="panel panel-success">
-            <div class="panel-heading"><h3 class="panel-title">
-            <a href="{% url "newsdetail" pk=obj.pk slug=obj.slug %}">{{obj.title|truncatewords:5|upper}}</a>
-            </h3>
+            <div class="panel-heading"><h3 class="panel-title"><strong>
+            <a style="color:green" href="{% url "newsdetail" pk=obj.pk slug=obj.slug %}">{{obj.title|truncatewords:5|upper}}</a>
+            </strong></h3>
             <p style="font-size:105%; float:right;"> {{obj.publish_date|date:"d-m-Y"}} {{ obj.publish_date|date:"H:i" }} </p>
             </div>
             <a href="{% url "newsdetail" pk=obj.pk slug=obj.slug %}">
-            <div style="font-size:110%" class="panel-body">{{obj.content|truncatewords:100|title}}</div>
+            <div style="font-size:110%; color:black;" class="panel-body">{{obj.content|truncatewords:100|title}}</div>
             </a>
             <a class="btn btn-success btn-rg" href="{% url "newsdetail" pk=obj.pk slug=obj.slug %}" >
             <span class="glyphicon glyphicon-log-in "></span>
