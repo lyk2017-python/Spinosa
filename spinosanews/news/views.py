@@ -5,7 +5,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.utils.decorators import method_decorator
 from django.views import generic
 from news.models import *
-from news.forms import ContactForm, CreateNewsForm, CreateCommentForm
+from news.forms import ContactForm, CreateNewsForm, CreateCommentForm, CustomUserCreationForm
 from django.db.models import F
 from django.shortcuts import get_object_or_404
 
@@ -111,4 +111,14 @@ class ContactFormView(generic.FormView):
             "ip={}").format(data["body"], data["email"], self.request.META["REMOTE_ADDR"]),
             settings.DEFAULT_FROM_EMAIL,
             ["spinosa@spinosamail.com"])
+        return super().form_valid(form)
+
+
+class RegistrationView(generic.FormView):
+    form_class = CustomUserCreationForm
+    template_name = "news/signup.html"
+    success_url = "/"
+
+    def form_valid(self, form):
+        form.save()
         return super().form_valid(form)

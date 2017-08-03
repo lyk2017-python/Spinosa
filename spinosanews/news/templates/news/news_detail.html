@@ -6,8 +6,8 @@
 <br><br>
 <p style="font-size:130%">{{news.content}}</p>
 {% if request.user.is_authenticated %} <br>
-    <button style="background-color:#FFFAF0; border:none;" onclick="like_news(true, {{ news.id }})"><span class="glyphicon glyphicon-thumbs-up"></span></button>
     <span id="like_news_{{ news.id }}">{{news.likes}}</span>
+    <button style="background-color:#FFFAF0; border:none;" onclick="like_news(true, {{ news.id }})"><span class="glyphicon glyphicon-thumbs-up"></span></button>
     <button style="background-color:#FFFAF0; border:none;" onclick="like_news(false, {{ news.id }})"><span class="glyphicon glyphicon-thumbs-down"></span></button>
 
 {% endif%}
