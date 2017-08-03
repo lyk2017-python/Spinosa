@@ -18,8 +18,9 @@
 <body>
     <h1 class="dom"><a href={% url "home" %}>SPINOSA NEWS</a></h1>
     <h3 class="createnew">
-        <span class="glyphicon glyphicon-pushpin"></span>
-        <a href="{% url "createnews" %}">Create News</a></h3>
+        <a href="{% url "createnews" %}">
+        <span class="glyphicon glyphicon-plus-sign" style="color:#0080ff; font-size:45px; padding:20px;" title="Create News"></span>
+        </a></h3>
     <ul class="pager">
         {% if request.user.is_authenticated %}
 
@@ -31,7 +32,7 @@
             <button style="float:right; position: absolute; right:10px; top:175px;" class="btn btn-warning">Logout</button></li>
             </form>
         <li>
-            <span style="float:right; position: absolute; right:90px; top:177px;">{{user.username|title}}<span>
+            <span style="float:right; position: absolute; right:90px; top:177px;"><strong>{{user.username|title}}</strong><span>
         </li>
         {% else %}
         <li>
