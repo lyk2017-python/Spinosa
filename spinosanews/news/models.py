@@ -3,6 +3,7 @@ from django.utils import timezone
 from django.dispatch import receiver
 from django.db.models.signals import pre_save
 from django.template.defaultfilters import slugify
+from django.contrib.auth.models import User
 
 class News(models.Model):
     ''' DOCUMENTATION
@@ -25,6 +26,7 @@ class News(models.Model):
     reports = models.PositiveSmallIntegerField(default=0)
     status = models.PositiveSmallIntegerField(default=0)
     categories = models.ManyToManyField("Category")
+    user = models.ForeignKey(User)
 
     def __str__(self):
         return "{id}-{title}".format(id = self.id, title = self.title[0:20])
@@ -47,6 +49,7 @@ class Comment(models.Model):
     update_date = models.DateField(auto_now=True)
     likes = models.SmallIntegerField(default=0)
     reports = models.PositiveSmallIntegerField(default=0)
+    user = models.ForeignKey(User)
 
     def __str__(self):
         return "{id}-{content}".format(id = self.id,content = self.content[0:20])

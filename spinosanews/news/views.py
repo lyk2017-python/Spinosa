@@ -45,6 +45,14 @@ class CreateNewsForm(LoginRequiredMixin,generic.CreateView):
     template_name = "news/create_news.html"
     success_url = "/"
 
+    def get_form_kwargs(self):
+        kwargs = super().get_form_kwargs()
+        if self.request.method in ["POST", "PUT"]:
+            post_data = kwargs["data"].copy()
+            post_data["user"] = self.request.user.id
+            kwargs["data"] = post_data
+        return kwargs
+
 # Create your views here.
 class HomepageView(generic.ListView):
 
@@ -88,6 +96,7 @@ class NewsView(generic.CreateView):
         if self.request.method in ["POST", "PUT"]:
             post_data = kwargs["data"].copy()
             post_data["news"] = self.get_news().id
+            post_data["user"] = self.request.user.id
             kwargs["data"] = post_data
         return kwargs
 

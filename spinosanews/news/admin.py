@@ -33,6 +33,7 @@ class NewsAdmin(admin.ModelAdmin):
                  "image",
                  "status",
                  "categories",
+                 "user",
              ]
          }
     ),

@@ -26,6 +26,9 @@ class CreateNewsForm (forms.ModelForm):
             "slug",
             "publish_date",
         ]
+        widgets = {
+            "user": HiddenInput()
+        }
 
 class CreateCommentForm(forms.ModelForm):
     class Meta:
@@ -39,7 +42,8 @@ class CreateCommentForm(forms.ModelForm):
         ]
 
         widgets= {
-            "news" : HiddenInput()
+            "news" : HiddenInput(),
+            "user": HiddenInput()
         }
 
 class CustomUserCreationForm(UserCreationForm):

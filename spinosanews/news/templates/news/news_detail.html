@@ -12,6 +12,8 @@
 
 {% endif%}
 <br><br>
+Author: {{news.user|title}}
+<br><br>
 Tags:
 {% for cat in news.categories.all %}
     <a href="{% url "categorydetail" slug=cat.slug %}">{{cat.name|title}}</a>
@@ -45,7 +47,9 @@ Source:
 <div class="list-group">
     <hr>
     {% for com in commentslist %}
+        <h4><strong><u>{{com.user|title}}</u></strong></h4>
         <h4 class="list-group-item-heading">{{com.content}}</h4>
+
     {% if request.user.is_authenticated %}
     <br>
     <p class="list-group-item-text">
