@@ -1,14 +1,21 @@
+@font-face {
+    font-family: 'Klondike';
+    src: url('../fonts/CFKlondikePERSONAL-Regular.ttf');
+}
+
 body {
     background-color:  #f8f8f8   !important;
 
 }
 
 .dom {
-    font-size: 450% !important;
+    font-family: Klondike !important;
+    font-size: 650% !important;
     display: block;
     text-align: center;
-
 }
+
+
 
 .createnew{
     display: block;
